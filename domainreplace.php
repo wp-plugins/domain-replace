@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Domain Replace
-Plugin URI: http://duogeek.com
+Plugin URI: http://duogeek.com/products/plugins/domain-replace/
 Description: Changes URL in the shortest and fastest way.
-Version: 1.1
+Version: 1.2
 Author: DuoGeek
 Author URI: http://duogeek.com
 Author Email: duogeek.dev@gmail.com
@@ -103,6 +103,8 @@ function dr_options()
                 <h3 class="hndle">Instruction</h3>
                 <div class="inside">
                     <p><strong>DO NOT click on "Replace URL Now" before you save your OLD and NEW URLs.</strong></p>
+					<p>For detailed instructions and video tutorial, please visit the <a href="http://duogeek.com/products/plugins/domain-replace/" target="_blank">plugin page.</a></p>
+					<p>For any issues, problem or query, please feel free to <a href="http://duogeek.com/contact/" target="_blank">contact us</a>.</p>
                 </div>
             </div>
 

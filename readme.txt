@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: domain replace, url replace, url change, domain change
 Requires at least: 3.5
 Tested up to: 4.0.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,9 +18,9 @@ There are lots of backup plugin in the market that helps you to take a backup yo
 
 Here comes "Domain Replace" to help you. It will change all instances of the OLD URL into NEW URL.
 
-After installing the plugin you will see a new menu in "Settings > Domain Replace".
-In first section, you need to provide old URL and new URL, then save.
-After saving, in the same page, click on replace button and Ta-Da!
+For detailed instruction and video tutorial, please visit the <a href="http://duogeek.com/products/plugins/domain-replace/" target="_blank">plugin page</a>.
+
+For any issues, problem or query, please feel free to <a href="http://duogeek.com/contact/" target="_blank">contact us</a>.
 
 
 == Installation ==
@@ -41,5 +41,8 @@ After saving, in the same page, click on replace button and Ta-Da!
 
 
 == Changelog ==
+= 1.2 =
+* Minor fixes
+
 = 1.1 =
 * Initial release
