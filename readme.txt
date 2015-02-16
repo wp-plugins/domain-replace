@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: domain replace, url replace, url change, domain change
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ For any issues, problem or query, please feel free to <a href="http://duogeek.co
 
 
 == Changelog ==
+= 1.3 =
+* Minor fixes
+
 = 1.2 =
 * Minor fixes
 

@@ -3,7 +3,7 @@
 Plugin Name: Domain Replace
 Plugin URI: http://duogeek.com/products/plugins/domain-replace/
 Description: Changes URL in the shortest and fastest way.
-Version: 1.2
+Version: 1.3
 Author: DuoGeek
 Author URI: http://duogeek.com
 Author Email: duogeek.dev@gmail.com
@@ -25,13 +25,27 @@ License: GPLv2 or later
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+if ( ! defined( 'ABSPATH' ) ) wp_die( __( 'Sorry hackers! This is not your place!', 'df' ) );
+
+if( ! defined( 'DUO_PLUGIN_URI' ) ) define( 'DUO_PLUGIN_URI', plugin_dir_url( __FILE__ ) );;
+
+require 'duogeek/duogeek-panel.php';
+
 define( 'BRAND', 'Domain Replace Admin Panel' );
 
-add_action('admin_menu', 'dr_menu');
+add_filter( 'duogeek_submenu_pages', 'dr_option_menu' );
 
-function dr_menu()
+function dr_option_menu( $submenus )
 {
-    add_options_page('Domain Replace Options', 'Domain Replace', 'manage_options', 'dr-convert', 'dr_options');
+    $submenus[] = array(
+        'title' => 'Domain Replace Options',
+        'menu_title' => 'Domain Replace Options',
+        'capability' => 'manage_options',
+        'slug' => 'dr-convert',
+        'function' => 'dr_options'
+    );
+
+    return $submenus;
 }
 
 function dr_options()
@@ -53,14 +67,18 @@ function dr_options()
             $msg = 'Data Saved';
         }
 
-        wp_redirect(admin_url('options-general.php?page=dr-convert&msg=' . str_replace(' ', '+', $msg)));
+        wp_redirect(admin_url('admin.php?page=dr-convert&msg=' . str_replace(' ', '+', $msg)));
     }
 
     $options = get_option('dr_options', true);
 
 
-    if (!isset($options['options']['newurl']) || $options['options']['newurl'] == '')
+    if (!isset($options['options']['newurl']) || $options['options']['newurl'] == ''){
+        $options = array();
+        $options['options'] = array();
         $options['options']['newurl'] = get_site_url();
+    }
+
 
     if (isset($_REQUEST['replace_url']) && $_REQUEST['replace_url'] == 'now') {
 
@@ -86,7 +104,7 @@ function dr_options()
         }
 
 
-        wp_redirect( admin_url( 'options-general.php?page=dr-convert&msg=' . str_replace( ' ', '+', $msg ) ) );
+        wp_redirect( admin_url( 'admin.php?page=dr-convert&msg=' . str_replace( ' ', '+', $msg ) ) );
     }
     ?>
     <div class="wrap">
@@ -111,7 +129,7 @@ function dr_options()
             <div class="postbox">
                 <h3 class="hndle">Save your URLs</h3>
                 <div class="inside">
-                    <form action="<?php echo admin_url( 'options-general.php?page=dr-convert&noheader=true' ) ?>" method="post">
+                    <form action="<?php echo admin_url( 'admin.php?page=dr-convert&noheader=true' ) ?>" method="post">
                         <?php wp_nonce_field('a2rc_nonce', 'a2rc_nonce_val'); ?>
                         <table cellpadding="5" cellspacing="5">
                             <tr>
@@ -143,7 +161,7 @@ function dr_options()
                         <li>► This is an expensive query if you have a quite large database. In that case, please deactivate all plugins and activate default WordPress theme.</li>
                         <li>► Fingers crossed !</li>
                     </ul>
-                    <p><br /><a class="button button-primary" href="<?php echo admin_url('options-general.php?page=dr-convert&replace_url=now&noheader=true') ?>">Replace URL Now</a>
+                    <p><br /><a class="button button-primary" href="<?php echo admin_url('admin.php?page=dr-convert&replace_url=now&noheader=true') ?>">Replace URL Now</a>
                     </p>
                 </div>
             </div>
