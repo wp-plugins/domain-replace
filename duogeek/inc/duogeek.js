@@ -4,14 +4,19 @@
         $(this).next('.inside').slideToggle();
     });
 
-    $('.duo_prod_panel input').iCheck({
-        checkboxClass: 'icheckbox_square',
-        radioClass: 'iradio_square',
-        increaseArea: '20%' // optional
-    });
+    if( $('.duo_prod_panel input').length ){
+        $('.duo_prod_panel input').iCheck({
+            checkboxClass: 'icheckbox_square',
+            radioClass: 'iradio_square',
+            increaseArea: '20%' // optional
+        });
+    }
 
-    $('.duo_prod_panel select').selectize({
-        sortField: 'text'
-    });
+    if( $('.duo_prod_panel select').length ){
+        $('.duo_prod_panel select').selectize({
+            sortField: 'text'
+        });
+    }
+
 
 });
