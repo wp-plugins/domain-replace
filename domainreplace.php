@@ -3,7 +3,7 @@
 Plugin Name: Domain Replace
 Plugin URI: http://duogeek.com/products/plugins/domain-replace/
 Description: Changes URL in the shortest and fastest way.
-Version: 1.3.1
+Version: 1.3.2
 Author: DuoGeek
 Author URI: http://duogeek.com
 Author Email: duogeek.dev@gmail.com

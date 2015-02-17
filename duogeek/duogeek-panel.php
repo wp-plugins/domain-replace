@@ -316,38 +316,10 @@ if( ! class_exists( 'DuoGeekPlugins' ) ){
 
             }
 
-            $data = file_get_contents( 'http://duogeek.com/feed/?post_type=product' );
-            $xml = simplexml_load_string( $data );
-
-            $promo = file_get_contents( 'http://duogeek.com/duo-promo.xml' );
-            $promo_data = simplexml_load_string( $promo );
+            $promo_content = wp_remote_get( 'http://duogeek.com/duo-promo.html' );
 
             ?>
             <div class="wrap duo_prod_panel">
-
-                <?php if( $promo_data->title != '' ) { ?>
-                    <div class="duo-promo" style="margin-bottom: 30px;">
-                    <?php echo $promo_data->content; ?>
-                    </div>
-                <?php } ?>
-
-                <h2>DuoGeek Products</h2>
-
-                <div class="duoGeek_panel_holder">
-                    <ul>
-                        <?php foreach( $xml->channel->item as $product ){ ?>
-                            <li>
-                                <div class="product_image_holder">
-                                    <a href="<?php echo $product->link; ?>" target="_blank"><img src="http://duogeek.com/items/<?php echo strtolower( str_replace( array( ' ', ',' ), array( '-', '' ), $product->title ) ) ?>.jpg"></a>
-                                </div>
-                                <div class="product_title_holder">
-                                    <h4><?php echo $product->title; ?></h4>
-                                </div>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-
 
                 <h2><?php _e( 'DuoGeek Settings', 'dp' ) ?></h2>
 
@@ -379,6 +351,8 @@ if( ! class_exists( 'DuoGeekPlugins' ) ){
                         <p><input type="submit" name="dp_save" class="button button-primary" value="<?php _e( 'Save Settings', 'dp' ) ?>" /></p>
                     </form>
                 </div>
+
+                <?php echo $promo_content['body']; ?>
 
             </div>
         <?php
